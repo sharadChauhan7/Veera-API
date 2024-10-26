@@ -36,11 +36,13 @@ const userSchema = new Schema({
     emergencyContact:[{
         name:{
             type:String,
-            required:true
+            default:null,
         },
         phone:{
             type:Number,
-            required:true
+            min:10,
+        default:null,
+        default:null
         }
     }],
     role:{

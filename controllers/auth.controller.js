@@ -4,6 +4,7 @@ import 'dotenv/config'
 import bcrypt from 'bcrypt';
 
 export const signup = async (req, res) => {
+    console.log("Signup called");
     try {
 
         let { name, email, location ,password,phone,emergencyContact } = new User(req.body);
@@ -51,6 +52,7 @@ export const signup = async (req, res) => {
 }
 
 export const login = async (req, res) => {
+    console.log("Login called");
     try {
         let { email, password,location } = req.body;
         let user = await User.findOne({ email: email });

@@ -36,11 +36,9 @@ class PriorityQueue {
         this._siftDown();
         return poppedValue;
     }
-
     _greater(i, j) {
         return this._comparator(this._heap[i], this._heap[j]) > 0;
-    }
-
+    } 
     _swap(i, j) {
         [this._heap[i], this._heap[j]] = [this._heap[j], this._heap[i]];
     }
@@ -107,7 +105,7 @@ export const sendSoS = async (req, res) => {
 
     //THIS POINTS ARRAY IS TO BE FETCHED FROM DATABASE COLLECTION OF USERS WHERE VOLUNTEER = TRUE 
     const points = [
-        { coordinates: [27.5312, 79.8455], phone: '+918273619318' }, // Hraryana
+        { coordinates: [27.5312, 79.8455], phone: '+918979026385' }, // Hraryana
         { coordinates: [27.497462965783534, 77.68341135617429], phone: '+919634879999' }, // Mathura
         { coordinates: [27.1752554, 78.0098161], phone: '+916395134456' },  // Agra
     ];
@@ -123,7 +121,7 @@ export const sendSoS = async (req, res) => {
             message: `I need help. My name is ${name}, and i am in a danger, and I am at https://www.google.com/maps/dir/?api=1&destination=${coordinates[0]},${coordinates[1]}  `
         };
 
-        axios.post('https://nomorenirbhaya.pythonanywhere.com/api/send-message/', data)
+        axios.post('https://nomorenirbhaya.pythonanywhere.com/api/sos-call/', data)
             .then(response => {
                 console.log(`Message sent to ${item.phone}: ${response.data}`);
             })
@@ -142,7 +140,7 @@ export const sendSoS = async (req, res) => {
             message: `Hey ${contact.name} we think ${name} is in  danger, and He is at https://www.google.com/maps/dir/?api=1&destination=${coordinates[0]},${coordinates[1]}  `
         };
 
-        axios.post('https://nomorenirbhaya.pythonanywhere.com/api/send-message/', data)
+        axios.post('https://nomorenirbhaya.pythonanywhere.com/api/sos-call/', data)
             .then(response => {
                 console.log(`Message sent to ${contact.phone}: ${response.data}`);
             })
@@ -185,7 +183,7 @@ let msg ={
   }
     try{
         console.log(JSON.stringify(msg));
-        let res = await axios.post('http://13.234.217.68:8000/dashboard/api/sos-call/',JSON.stringify(msg));
+        let res = await axios.post('http://3.110.172.102:8000/dashboard/api/sos-call/',JSON.stringify(msg));
         console.log(res.data);
     }
     catch(e){
